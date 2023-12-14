@@ -52,9 +52,27 @@ const signup = async (req, res, next) => {
     places: []
   });
 
+  // let createdUser;
+  // try {
+  //   await User.init();
+  //   createdUser = User.create({
+  //     name,
+  //     email,
+  //     image: req.file.path,
+  //     password: hashedPassword,
+  //     places: []
+  //   });
+  //   // await createdUser.save();
+  // } catch (err) {
+  //   console.log('err', err);
+  //   const error = new HttpError('Signing Up failed, please try again.', 500);
+  //   return next(error);
+  // }
+
   try {
     await createdUser.save();
   } catch (err) {
+    console.log('err', err);
     const error = new HttpError('Signing Up failed, please try again.', 500);
     return next(error);
   }
